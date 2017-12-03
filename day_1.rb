@@ -18,5 +18,35 @@ def add(num)
   print total
 end
 
-add(test)
+# add(test)
 
+# # # # # # # # # # # # # # # # # # # # # # # # # 
+
+# Part 2
+def halfadd(num)
+  sum = []
+  counter = 0
+  num = num.to_s.split('')
+  halfway = num.length / 2
+  until counter >= num.count
+    current = num[counter]
+    compare = num[counter + halfway]
+    if current == compare
+      sum.push(current.to_i)
+    end
+    if (counter + halfway) > num.count 
+      wrap = num.count - (counter + halfway)
+      if num[wrap] == current 
+        sum.push(current.to_i)
+      end
+    end
+    counter += 1
+  end
+  if num[halfway] == num[num.length - 1]
+    sum.push(num[num.length - 1].to_i)
+  end
+  total = sum.inject(0){ |total, x| total + x }
+  print total
+end
+
+halfadd(test)
